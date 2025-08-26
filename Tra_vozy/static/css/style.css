@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --golden: #FFB22C;
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection {
+    background: var(--golden);
+    color: #fff;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 90px 15% 80px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    /* Adjust spacing between items */
+    flex-wrap: nowrap;
+    /* Prevent wrapping to new line */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 2rem;
+    background: #FFB22C;
+    color: #000;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-left: 20px;
+    /* Reduce left margin */
+    flex-shrink: 0;
+    /* Prevent button from shrinking */
+    transition: .5s;
+    animation: animate 2s forwards;
+
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #000;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 9%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+header .logo {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #FFB22C;
+    text-transform: uppercase;
+    animation: animate 2s forwards;
+
+}
+
+header .logo span {
+    color: #fff;
+    animation: animate 2s forwards;
+
+}
+
+header .navigation a {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0.8rem;
+    position: relative;
+    display: inline-block;
+    animation: animate 2s backwards;
+
+}
+
+header .navigation a::after {
+    content: " ";
+    height: 3px;
+    width: 0%;
+    background: #FFB22C;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: .4s linear;
+}
+
+
+header .navigation a:hover {
+    color: #FFB22C;
+}
+
+
+header .icons i {
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+header .icons i:hover {
+    color: var(--golden);
+}
