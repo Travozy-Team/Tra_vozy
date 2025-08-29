@@ -220,3 +220,31 @@ function createMessagesContainer() {
 }
 
 
+// Automatic Video Slideshow
+let currentVideoIndex = 0;
+const videoButtons = document.querySelectorAll('.vid-btn');
+const videoSlider = document.getElementById('video-slider');
+
+function changeVideo(index) {
+    videoButtons.forEach(btn => btn.classList.remove('active'));
+    videoButtons[index].classList.add('active');
+    const newSrc = videoButtons[index].getAttribute('data-src');
+    videoSlider.src = newSrc;
+    videoSlider.play();
+}
+
+function autoPlayVideos() {
+    setInterval(() => {
+        currentVideoIndex = (currentVideoIndex + 1) % videoButtons.length;
+        changeVideo(currentVideoIndex);
+    }, 5000);
+}
+
+autoPlayVideos();
+
+videoButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        currentVideoIndex = index;
+        changeVideo(currentVideoIndex);
+    });
+});

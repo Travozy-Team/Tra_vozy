@@ -138,7 +138,48 @@
     </div>
 
 
-<!---footer-->
+    <!--home section starts-->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h3>Unfold ✧ Explore ✧ Feel </h3>
+            <h1>Visit <span class="change-content"></span></h1>
+            <p>Your Journey Starts at Travozy</p>
+
+            <div class="home-btn">
+                <a href="{% url 'about' %}" class="btn">discover more</a>
+            </div>
+        </div>
+
+
+        <div class="controls">
+            <span class="vid-btn active" data-src="{% static 'img/vid-1.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'img/vid-2.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'img/vid-3.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'img/vid-4.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'img/vid-5.mp4' %}"></span>
+        </div>
+
+        <div class="video-container" data-aos="zoom-out" data-aos-duration="1000" data-aos-easing="ease-in-out">
+            <video src="{% static 'img/vid-1.mp4' %}" id="video-slider" loop autoplay muted></video>
+        </div>
+    </section>
+    <!--home section starts-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!---footer-->
     <footer class="footer" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <div class="row">
             <div class="col">
@@ -165,7 +206,7 @@
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>
-            
+
             <div class="col">
                 <h3>Newsletter<div class="underline"><span></span></div>
                 </h3>
