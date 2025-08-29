@@ -248,3 +248,23 @@ videoButtons.forEach((btn, index) => {
         changeVideo(currentVideoIndex);
     });
 });
+
+
+
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+if (localStorage.getItem('dark-mode')) {
+    body.classList.add('dark-mode');
+    themeToggle.checked = true;
+}
+
+themeToggle.addEventListener('change', function () {
+    if (this.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('dark-mode', 'enabled');
+    } else {
+        body.classList.remove('dark-mode');
+        localStorage.removeItem('dark-mode');
+    }
+});

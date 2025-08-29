@@ -690,6 +690,67 @@ input[type="email"]::-webkit-input-placeholder {
 }
 
 
+/*---------------Dark button------------ */
+.theme-toggle {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+#theme-toggle {
+    display: none;
+}
+
+.theme-toggle-label {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    background: #333;
+    display: block;
+    border-radius: 50px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.theme-toggle-label::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+#theme-toggle:checked+.theme-toggle-label {
+    background: #fff;
+}
+
+#theme-toggle:checked+.theme-toggle-label::after {
+    left: calc(100% - 28px);
+    background: #333;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark-mode header {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-mode .navigation a {
+    color: #fff;
+}
+
 
 
 .home {
