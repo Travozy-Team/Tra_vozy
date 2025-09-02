@@ -168,7 +168,81 @@
             <video src="{% static 'img/vid-1.mp4' %}" id="video-slider" loop autoplay muted></video>
         </div>
     </section>
-    <!--home section starts-->
+    <!--home section ends-->
+
+    <!--packages section starts-->
+    <div class=" container swiper">
+        <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-out">
+            Featured <span>Packages</span></h1>
+        <div class="swiper-wrapper">
+            <!-- Card 1 -->
+            <div class="swiper-slide" data-aos="pop-slide-up" data-aos-delay="0">
+                <a href="{% url 'tour-packages' %}" class="card-link">
+
+                    <div class="card">
+                        <img src="{% static 'img/n-1.jpeg' %}" alt="Europe">
+                        <p class="badge europe">Europe</p>
+                        <h2 class="card-title">Tulips, Chocolates & Castles: Explore Netherlands, Belgium & Luxembourg
+                            in 15
+                            Days.</h2>
+                    </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="swiper-slide" data-aos="pop-slide-up" data-aos-delay="100">
+                <a href="{% url 'tour-packages' %}" class="card-link"></a>
+                <div class="card">
+                    <img src="{% static 'img/v-1.jpg' %}" alt="Vietnam">
+                    <p class="badge vietnam">WONDERS OF VIETNAM</p>
+                    <h2 class="card-title">Cruise Halong Bay and explore Hanoi and Hoi An in 6 Days.Enjoy Vietnam’s
+                        beauty and culture.</h2>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="swiper-slide" data-aos="pop-slide-up" data-aos-delay="200">
+                <a href="{% url 'tour-packages' %}" class="card-link"></a>
+                <div class="card">
+                    <img src="{% static 'img/o-1.jpeg' %}" alt="Dubai">
+                    <p class="badge dubai"> Desert Kingdoms Odyssey</p>
+                    <h2 class="card-title">Experience ultra-modern Dubai, timeless Omani landscapes, and ancient
+                        Jordanian wonders in 10 Days.</h2>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="swiper-slide" data-aos="pop-slide-up" data-aos-delay="300">
+                <a href="{% url 'tour-packages' %}" class="card-link"></a>
+                <div class="card">
+                    <img src="{% static 'img/c-1.jpeg' %}" alt="Southeast Asia">
+                    <p class="badge southeastasia">Southeast Asia</p>
+                    <h2 class="card-title">Temples, Beaches & City Lights: Explore Thailand, Cambodia & Malaysia in 10
+                        Days.</h2>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="swiper-slide" data-aos="pop-slide-up" data-aos-delay="400">
+                <a href="{% url 'tour-packages' %}" class="card-link"></a>
+                <div class="card">
+                    <img src="{% static 'img/t-1.jpeg' %}" alt="kenya">
+                    <p class="badge kenya">Kenya, Tanzania & Zanzibar</p>
+                    <h2 class="card-title">Experience thrilling safaris, the beauty of Mount Kilimanjaro,all in one epic
+                        journey in 12 Days.</h2>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Add pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Add navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <!--packages section starts-->
+
 
 
 
