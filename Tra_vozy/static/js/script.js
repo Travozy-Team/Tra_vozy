@@ -270,6 +270,14 @@ themeToggle.addEventListener('change', function () {
 });
 
 
+// Banner Top Destinations
+const banner = document.querySelector(".banner_wrapper");
+Array.from(banner.children).forEach((item) => {
+    const duplicateNode = item.cloneNode(true);
+    duplicateNode.setAttribute("aria-hidden", true);
+    banner.appendChild(duplicateNode);
+});
+
 // Packages Swiper
 document.addEventListener('DOMContentLoaded', function () {
     // Card Packages Swiper
