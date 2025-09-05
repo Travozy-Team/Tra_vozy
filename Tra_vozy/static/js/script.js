@@ -300,4 +300,33 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 
+
+
+ // Testimonials Swiper
+    const testimonialSwiper = new Swiper('.testimonials-slider.swiper', {
+        loop: true,
+        spaceBetween: 30,
+        autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1, // Always show just 1 slide
+        breakpoints: {
+            // Remove the slidesPerView settings from breakpoints
+            768: {
+                // Adjust other settings if needed, but keep slidesPerView at 1
+            },
+            1024: {
+                // Adjust other settings if needed, but keep slidesPerView at 1
+            }
+        }
+    });
 });
