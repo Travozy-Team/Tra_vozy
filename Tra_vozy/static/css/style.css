@@ -1655,3 +1655,28 @@ body.dark-mode .navigation a {
   color: #fff;
   font-size: 15px;
 }
+
+
+.about-head {
+    display: flex;
+    align-items: center;
+}
+
+.about-head img {
+    width: 50%;
+    height: auto;
+}
+
+.about-head div {
+    padding-left: 40px;
+
+}
+
+.about-head h2 {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.about-head p {
+    font-size: 1.5rem;
+}
