@@ -1,292 +1,195 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Website With Login & Registration</title>
 
     <!-- Font Awesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- Swiper -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-  </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
 
-  <body>
+<body>
     <header>
-      <a href="#" data-aos="zoom-in-left" data-aos-delay="150" class="logo"
-        ><span>T</span>RAVOZY</a
-      >
-      <nav class="navigation">
-        <a href="{% url 'index' %}" data-aos="zoom-in-left" data-aos-delay="300"
-          >Home</a
-        >
-        <a href="{% url 'about' %}" data-aos="zoom-in-left" data-aos-delay="450"
-          >About</a
-        >
-        <a
-          href="{% url 'tour-packages' %}"
-          data-aos="zoom-in-left"
-          data-aos-delay="600"
-          >Tour Packages</a
-        >
-        <a href="{% url 'hajj' %}" data-aos="zoom-in-left" data-aos-delay="600"
-          >Hajj Packages</a
-        >
-        <a
-          href="{% url 'services' %}"
-          data-aos="zoom-in-left"
-          data-aos-delay="750"
-          >Services</a
-        >
-        <a
-          href="{% url 'contact' %}"
-          data-aos="zoom-in-left"
-          data-aos-delay="1050"
-          >Contact</a
-        >
+        <a href="#" data-aos="zoom-in-left" data-aos-delay="150" class="logo"><span>T</span>RAVOZY</a>
+        <nav class="navigation">
+            <a href="{% url 'index' %}" data-aos="zoom-in-left" data-aos-delay="300">Home</a>
+            <a href="{% url 'about' %}" data-aos="zoom-in-left" data-aos-delay="450">About</a>
+            <a href="{% url 'tour-packages' %}" data-aos="zoom-in-left" data-aos-delay="600">Tour Packages</a>
+            <a href="{% url 'hajj' %}" data-aos="zoom-in-left" data-aos-delay="600">Hajj Packages</a>
+            <a href="{% url 'services' %}" data-aos="zoom-in-left" data-aos-delay="750">Services</a>
+            <a href="{% url 'contact' %}" data-aos="zoom-in-left" data-aos-delay="1050">Contact</a>
 
-        <button
-          class="btnLogin-popup"
-          data-aos="zoom-in-left"
-          data-aos-delay="1200"
-        >
-          Login
-        </button>
-        <li class="theme-toggle">
-          <input type="checkbox" id="theme-toggle" />
-          <label for="theme-toggle" class="theme-toggle-label"></label>
-        </li>
-      </nav>
+            <button class="btnLogin-popup" data-aos="zoom-in-left" data-aos-delay="1200">
+                Login
+            </button>
+            <li class="theme-toggle">
+                <input type="checkbox" id="theme-toggle" />
+                <label for="theme-toggle" class="theme-toggle-label"></label>
+            </li>
+        </nav>
     </header>
 
     <!--login-->
     <div class="blur-bg-overlay">
-      <div class="auth-wrapper">
-        <span class="icon-close">
-          <ion-icon name="close"></ion-icon>
-        </span>
+        <div class="auth-wrapper">
+            <span class="icon-close">
+                <ion-icon name="close"></ion-icon>
+            </span>
 
-        <div class="form-box login">
-          <h2>Login</h2>
-          <form method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
-            <div class="input-box">
-              <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input
-                type="email"
-                name="email"
-                required
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Email</label>
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required autocapitalize="none" autocomplete="off"
+                            autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="password" required class="password-input" autocapitalize="none"
+                            autocomplete="off" autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Password</label>
+                        <span class="toggle-password">
+                            <ion-icon name="eye-off" class="eye-icon"></ion-icon>
+                        </span>
+                    </div>
+                    <div class="remember-forgot">
+                        <label class="checkbox-label"><input type="checkbox" name="remember" />Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="login-register">
+                        <p>
+                            Don't have an account?
+                            <a href="#" class="register-link">Register</a>
+                        </p>
+                    </div>
+                </form>
             </div>
-            <div class="input-box">
-              <input
-                type="password"
-                name="password"
-                required
-                class="password-input"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Password</label>
-              <span class="toggle-password">
-                <ion-icon name="eye-off" class="eye-icon"></ion-icon>
-              </span>
+
+            <!--registration-->
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" name="username" required autocapitalize="none" autocomplete="off"
+                            autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Username</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required autocapitalize="off" autocomplete="off"
+                            autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="password1" required class="password-input" autocapitalize="off"
+                            autocomplete="off" autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Password</label>
+                        <span class="toggle-password">
+                            <ion-icon name="eye-off" class="eye-icon"></ion-icon>
+                        </span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="password2" required class="password-input" autocapitalize="none"
+                            autocomplete="off" autocorrect="off" spellcheck="false" style="text-transform: none" />
+                        <label>Confirm Password</label>
+                        <span class="toggle-password">
+                            <ion-icon name="eye-off" class="eye-icon"></ion-icon>
+                        </span>
+                    </div>
+                    <div class="remember-forgot">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agreeTerms" required />I agree to
+                            the terms & conditions
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="login-register">
+                        <p>
+                            Already have an account?
+                            <a href="#" class="login-link">Login</a>
+                        </p>
+                    </div>
+                </form>
             </div>
-            <div class="remember-forgot">
-              <label class="checkbox-label"
-                ><input type="checkbox" name="remember" />Remember me</label
-              >
-              <a href="#">Forgot Password?</a>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="login-register">
-              <p>
-                Don't have an account?
-                <a href="#" class="register-link">Register</a>
-              </p>
-            </div>
-          </form>
         </div>
-
-        <!--registration-->
-        <div class="form-box register">
-          <h2>Registration</h2>
-          <form method="POST" action="{% url 'register' %}">
-            {% csrf_token %}
-            <div class="input-box">
-              <span class="icon"><ion-icon name="person"></ion-icon></span>
-              <input
-                type="text"
-                name="username"
-                required
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Username</label>
-            </div>
-
-            <div class="input-box">
-              <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input
-                type="email"
-                name="email"
-                required
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Email</label>
-            </div>
-            <div class="input-box">
-              <input
-                type="password"
-                name="password1"
-                required
-                class="password-input"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Password</label>
-              <span class="toggle-password">
-                <ion-icon name="eye-off" class="eye-icon"></ion-icon>
-              </span>
-            </div>
-            <div class="input-box">
-              <input
-                type="password"
-                name="password2"
-                required
-                class="password-input"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                spellcheck="false"
-                style="text-transform: none"
-              />
-              <label>Confirm Password</label>
-              <span class="toggle-password">
-                <ion-icon name="eye-off" class="eye-icon"></ion-icon>
-              </span>
-            </div>
-            <div class="remember-forgot">
-              <label class="checkbox-label">
-                <input type="checkbox" name="agreeTerms" required />I agree to
-                the terms & conditions
-              </label>
-            </div>
-            <button type="submit" class="btn">Register</button>
-            <div class="login-register">
-              <p>
-                Already have an account?
-                <a href="#" class="login-link">Login</a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
 
-    <section
-      class="about-header"
-      data-aos="zoom-out"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-    >
-      <video autoplay muted loop id="about-video">
-        <source src="{% static 'img/vid-7.mp4' %}" type="video/mp4" />
-      </video>
-      <div class="about-header-content">
-        <h2>#KnowUs</h2>
-        <p>Lorem ipsum dolor sit amet ,consectetur</p>
-      </div>
+    <section class="about-header" data-aos="zoom-out" data-aos-duration="1000" data-aos-easing="ease-in-out">
+        <video autoplay muted loop id="about-video">
+            <source src="{% static 'img/vid-7.mp4' %}" type="video/mp4" />
+        </video>
+        <div class="about-header-content">
+            <h2>#KnowUs</h2>
+            <p>Lorem ipsum dolor sit amet ,consectetur</p>
+        </div>
     </section>
 
     <section id="about-head" class="about-head">
-      <img
-        src="{% static 'img/p-19.jpg' %}"
-        alt=""
-        data-aos="fade-right"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
-      />
-      <div
-        data-aos="fade-left"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
-      >
-        <h2>Who We Are?</h2>
-        <p>
-          At Travozy, we believe that travel is not just about visiting new
-          places, but about creating unforgettable experiences that inspire,
-          enrich, and transform lives. We are a team of passionate travel
-          experts dedicated to making your dream vacations a reality. From
-          hidden gems to popular destinations, we strive to offer personalized
-          tours that cater to your unique preferences.
-        </p>
-        <p>
-          Founded with the vision of bringing people closer to the world’s
-          wonders, Travozy combines personalized service with cutting-edge
-          technology, ensuring a seamless journey from start to finish. Whether
-          you’re planning a solo adventure, a family getaway, or a romantic
-          escape, we are here to guide you every step of the way.
-        </p>
-        <p>
-          We are committed to sustainability and responsible travel, ensuring
-          that our trips contribute positively to the communities we visit and
-          preserve the beauty of our planet for future generations.
-        </p>
-      </div>
+        <img src="{% static 'img/p-19.jpg' %}" alt="" data-aos="fade-right" data-aos-duration="1000"
+            data-aos-easing="ease-in-out" />
+        <div data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-out">
+            <h2>Who We Are?</h2>
+            <p>
+                At Travozy, we believe that travel is not just about visiting new
+                places, but about creating unforgettable experiences that inspire,
+                enrich, and transform lives. We are a team of passionate travel
+                experts dedicated to making your dream vacations a reality. From
+                hidden gems to popular destinations, we strive to offer personalized
+                tours that cater to your unique preferences.
+            </p>
+            <p>
+                Founded with the vision of bringing people closer to the world’s
+                wonders, Travozy combines personalized service with cutting-edge
+                technology, ensuring a seamless journey from start to finish. Whether
+                you’re planning a solo adventure, a family getaway, or a romantic
+                escape, we are here to guide you every step of the way.
+            </p>
+            <p>
+                We are committed to sustainability and responsible travel, ensuring
+                that our trips contribute positively to the communities we visit and
+                preserve the beauty of our planet for future generations.
+            </p>
+
+
+            <marquee bgcolor="#f5f5f5" loop="-1" scrollamount="4" width="100%"
+                style="padding: 8px 0; margin-top: 30px; font-weight: bold; color: #FFB22C; font-size: 14px;">
+                ✈️ **Travozy: Where Journeys Become Stories.** 🌍 Personalized Travel | Trusted Guides |
+                Unforgettable
+                Memories
+            </marquee>
+
+
+        </div>
     </section>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/c4254e24a8.js"
-      crossorigin="anonymous"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
-  </body>
+</body>
+
 </html>
