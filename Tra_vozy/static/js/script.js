@@ -6,6 +6,32 @@ const scrollReveal = ScrollReveal({
     reset: true // ✅ Ensures animations replay on scroll
 });
 
+// Apply ScrollReveal to Static Counter section
+scrollReveal.reveal('.media-counter', {
+    afterReveal: function (el) {
+        // Start the counter animation when the section is revealed
+        const countersEL = document.querySelectorAll(".numbers");
+        countersEL.forEach((counter) => {
+            counter.textContent = 1;
+            const target = +counter.getAttribute("data-ceil");
+            const increment = target / 25;
+
+            function updateCounter() {
+                const currentNum = +counter.textContent;
+                if (currentNum < target) {
+                    counter.textContent = Math.ceil(currentNum + increment);
+                    setTimeout(updateCounter, 70);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+
+            updateCounter();
+        });
+    }
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Get all necessary elements
     const btnLogin = document.querySelector('.btnLogin-popup');
@@ -330,3 +356,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
