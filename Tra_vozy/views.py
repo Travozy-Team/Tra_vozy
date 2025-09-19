@@ -150,3 +150,7 @@ def services(request):
 def contact(request):
     return render(request, 'Tra_vozy/contact.html')
 
+
+def package_details(request):
+    return render(request, 'travozy/stpack.html')
+
