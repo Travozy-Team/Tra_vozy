@@ -1774,7 +1774,7 @@ body.dark-mode .navigation a {
 .tour-packages .box-container .box .content p {
     font-size: 1.7rem;
     color: #666;
-    padding: 1rem ;
+    padding: 1rem;
 }
 
 .tour-packages .box-container .box .content .stars i {
@@ -1813,6 +1813,39 @@ body.dark-mode .navigation a {
 
 .box[data-visible="false"] {
     display: none;
+}
+
+
+
+/* =========== hajj pack ============ */
+
+.hajj-packages-header {
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+    margin-top: 70px;
+    position: relative;
+}
+
+.hajj-packages-header video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+.hajj-packages-header h2 {
+    color: #fff;
+    font-size: 40px;
 }
 
 
