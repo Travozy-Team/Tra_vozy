@@ -143,8 +143,8 @@
         </div>
     </section>
 
-   
-  <section class="tour-packages" id="tour-packages">
+
+    <section class="tour-packages" id="tour-packages">
         <div class="box-container">
 
             <div class="box" data-package="peru">
@@ -160,7 +160,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,50,000 </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="peru">View Details</a>
                 </div>
             </div>
 
@@ -179,7 +179,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="price"> BDT 1,75,000 <span>BDT 1,80,000</span> </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="greece">View Details</a>
                 </div>
             </div>
 
@@ -198,7 +198,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 1,50,000 <span>BDT 1,70,000</span> </div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="turkey">View Details</a>
                 </div>
             </div>
 
@@ -216,7 +216,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,40,000 <span>BDT 2,60,000</span> </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="madagascar">View Details</a>
                 </div>
             </div>
 
@@ -235,7 +235,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 3,35,000 </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="new zealand">View Details</a>
                 </div>
             </div>
 
@@ -253,7 +253,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="price"> BDT 1,25,999<span>BDT 1,50,000</span> </div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="jordan">View Details</a>
                 </div>
             </div>
 
@@ -270,7 +270,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,10,000 <span>BDT 2,50,000</span> </div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="mexico">View Details</a>
                 </div>
             </div>
 
@@ -288,7 +288,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,15,000 </div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="japan">View Details</a>
                 </div>
             </div>
 
@@ -306,7 +306,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,80,000 <span>BDT</span></div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="south australia">View Details</a>
                 </div>
             </div>
 
@@ -323,7 +323,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 5,50,000 <span>BDT 5,55,000</span> </div>
-                    <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="antarctic">View Details</a>
                 </div>
             </div>
 
@@ -341,7 +341,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,45,000 <span>BDT 2,60,000</span> </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="namibia">View Details</a>
                 </div>
             </div>
 
@@ -362,7 +362,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> BDT 2,30,000 <span>BDT 2,35,000</span> </div>
-                     <a href=" " class="btn">View details</a>
+                    <a href="#" class="btn package-link" data-package="iceland">View Details</a>
                 </div>
             </div>
 
@@ -370,7 +370,7 @@
 
     </section>
 
-    
+
     <!---footer-->
     <footer class="footer" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <div class="row">
@@ -433,53 +433,53 @@
     <script>
         AOS.init();
     </script>
-    
-<script>
-    // Django URL for package details - MAKE SURE THIS URL EXISTS IN YOUR URLS.PY
-    const packageDetailsUrl = "{% url 'package-details' %}";
 
-    // Simple Load More implementation
-    const loadMoreBtn = document.getElementById('loadMore');
-    const packages = document.querySelectorAll('.box-container .box');
-    let shown = 6;
+    <script>
+        // Django URL for package details - MAKE SURE THIS URL EXISTS IN YOUR URLS.PY
+        const packageDetailsUrl = "{% url 'package-details' %}";
 
-    function showMore() {
-        const toShow = Math.min(shown + 3, packages.length);
-        for (let i = shown; i < toShow; i++) {
-            packages[i].style.display = 'block';
+        // Simple Load More implementation
+        const loadMoreBtn = document.getElementById('loadMore');
+        const packages = document.querySelectorAll('.box-container .box');
+        let shown = 6;
+
+        function showMore() {
+            const toShow = Math.min(shown + 3, packages.length);
+            for (let i = shown; i < toShow; i++) {
+                packages[i].style.display = 'block';
+            }
+            shown = toShow;
+            if (shown >= packages.length) {
+                loadMoreBtn.style.display = 'none';
+            }
         }
-        shown = toShow;
-        if (shown >= packages.length) {
-            loadMoreBtn.style.display = 'none';
+
+        // Initialize
+        for (let i = 6; i < packages.length; i++) {
+            packages[i].style.display = 'none';
         }
-    }
 
-    // Initialize
-    for (let i = 6; i < packages.length; i++) {
-        packages[i].style.display = 'none';
-    }
+        loadMoreBtn.addEventListener('click', showMore);
 
-    loadMoreBtn.addEventListener('click', showMore);
+        // Add click events for package boxes and links
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('click', function (e) {
+                if (e.target.tagName !== 'A') {
+                    const packageId = this.getAttribute('data-package');
+                    window.location.href = packageDetailsUrl + '?id=' + packageId;
+                }
+            });
+        });
 
-    // Add click events for package boxes and links
-    document.querySelectorAll('.box').forEach(box => {
-        box.addEventListener('click', function (e) {
-            if (e.target.tagName !== 'A') {
+        // Add click events for View Details links
+        document.querySelectorAll('.package-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
                 const packageId = this.getAttribute('data-package');
                 window.location.href = packageDetailsUrl + '?id=' + packageId;
-            }
+            });
         });
-    });
-
-    // Add click events for View Details links
-    document.querySelectorAll('.package-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const packageId = this.getAttribute('data-package');
-            window.location.href = packageDetailsUrl + '?id=' + packageId;
-        });
-    });
-</script>
+    </script>
 </body>
 
 </html>
