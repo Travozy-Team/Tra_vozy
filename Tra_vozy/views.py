@@ -154,3 +154,5 @@ def contact(request):
 def package_details(request):
     return render(request, 'Tra_vozy/stpack.html')
 
+def hajj_package_details(request): 
+    return render(request, 'Tra_vozy/shajjpack.html')

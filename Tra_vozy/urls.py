@@ -8,6 +8,10 @@ urlpatterns = [
     path('hajj/', views.hajj, name='hajj'),
     path('services/', views.services, name='services'),
     path('contact/', views.contact, name='contact'),
+    path('package-details/', views.package_details, name='package-details'),
+    path('hajj-package-details/', views.hajj_package_details, name='hajj-package-details'),
+
+    
     
 
 
