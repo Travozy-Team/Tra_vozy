@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Website With Login & Registration</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+
+<body>
+
+
+    <header>
+        <a href="#" data-aos="zoom-in-left" data-aos-delay="150" class="logo"><span>T</span>RAVOZY</a>
+        <nav class="navigation">
+            <a href="{% url 'index' %}" data-aos="zoom-in-left" data-aos-delay="300">Home</a>
+            <a href="{% url 'about' %}" data-aos="zoom-in-left" data-aos-delay="450">About</a>
+            <a href="{% url 'tour-packages' %}" data-aos="zoom-in-left" data-aos-delay="600">Tour Packages</a>
+            <a href="{% url 'hajj' %}" data-aos="zoom-in-left" data-aos-delay="600">Hajj Packages</a>
+            <a href="{% url 'services' %}" data-aos="zoom-in-left" data-aos-delay="750">Services</a>
+            <a href="{% url 'contact' %}" data-aos="zoom-in-left" data-aos-delay="1050">Contact</a>
+
+            <button class="btnLogin-popup" data-aos="zoom-in-left" data-aos-delay="1200">Login</button>
+            <li class="theme-toggle">
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="theme-toggle-label"></label>
+            </li>
+        </nav>
+    </header>
+
+
+    <section id="hajj-packdetails" class="hajj-packdetails">
+        <div class="single-pro-img">
+            <img src="" width="100%" id="HajjMainImg" alt="">
+        </div>
+
+        <div class="hajj-pro-details">
+            <h4 id="hajjPackageTitle">Hajj Package Title</h4>
+            <h2 id="hajjPackagePrice">Package Price</h2>
+            <a href="#" id="hajjBookNowBtn" class="normal">Book Now</a>
+            <h4>Package Details</h4>
+            <span id="hajjPackageDescription">Hajj package details will be loaded here...</span>
+        </div>
+    </section>
+
+    <!---footer-->
+    <footer class="footer" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out">
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'img/Capture.png' %}" class="logo" />
+                <p>Explore the world with Travozy</p>
+            </div>
+            <div class="col">
+                <h3>Office <div class="underline"><span></span></div>
+                </h3>
+                <p>O R Nizam Road, GEC</p>
+                <p>Chattagram, Bangladesh</p>
+                <p class="email-id">nahianafroz0@gmail.com</p>
+                <h4>+018273</h4>
+            </div>
+            <div class="col">
+                <h3>Links<div class="underline"><span></span></div>
+                </h3>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About us</a></li>
+                    <li><a href="{% url 'tour-packages' %}">Tour packages</a></li>
+                    <li><a href="{% url 'hajj' %}">Hajj Packages</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Newsletter<div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="far fa-envelope"></i>
+                    <input type="email" placeholder="Enter Email" required />
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </footer>
+    <!--footer-->
+
+    <script>
+        // Hajj packages data - corrected with all package IDs from hajj.html
+        const hajjPackages = {
+            '40days': {
+                title: "40 Days Exclusive Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                mainImage: "{% static 'img/h-1.jpg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>A complete Hajj journey with stays near Masjid Al-Haram (Makkah) and Masjid An-Nabawi (Madinah).Stay in top hotels like Swissotel Makkah, Conrad Makkah, or Shaza Madinah.All key Hajj rituals included (Mina, Arafat, Muzdalifah) with guided support.</p>
+                    <p><strong>Inclusions:</strong> Round-trip flights from Dhaka,4-star/5-star hotel stays near Haram (Makkah and Madinah),Full board: daily buffet breakfast, lunch, and dinnerPrivate transport for Hajj rituals,Guided Hajj services and religious scholar support.</p>
+                    <p><strong>Exclusions:</strong>Personal shopping and souvenirs,Laundry services or personal snacks. </p>
+                    <p><strong>Booking Information:</strong>Hajj quota is limited; book at least 6 months in advance to secure your spot.</p> 
+                    <p><strong>Duration:</strong> 40 days including travel.</p>
+                `
+            },
+            '30days': {
+                title: "30 Days Non-Shifting Hajj Package",
+                price: "BDT 6,50,000/Per Person",
+                mainImage: "{% static 'img/h-2.jpeg' %}",
+                description: `
+                    <p><strong>Highlights:</strong> Enjoy non-shifting accommodations directly near Masjid Al-Haram, avoiding the stress of relocation during Hajj days.Stay at premium hotels like Hilton Suites Makkah or Anwar Al Madinah,Attend religious sessions, group prayers, and special Hajj programs.</p>
+                    <p><strong>Inclusions:</strong> Flights from Dhaka.Hotel near Haram with daily meals.Transportation and logistical support.Guided Hajj rituals and seminars.</p>
+                    <p><strong>Exclusions:</strong> Extra baggage fees or personal expenses. Optional tours or private excursions.</p>
+                      <p><strong>Booking Information:</strong>Non-shifting packages fill up fast; early confirmation required.</p>
+                       <p><strong>Duration:</strong> 30 days from departure to return.</p>
+                `
+            },
+            '10days': {
+                title: "Exclusive 10 Days Short Hajj Package",
+                price: "BDT 6,00,000/Per Person",
+                mainImage: "{% static 'img/h-3.jpeg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>Designed for those short on time but seeking a meaningful Hajj.Stay in top-rated hotels near Masjid Al-Haram such as Le Meridien Makkah.Complete essential rituals with an efficient and focused schedule. </p>
+                    <p><strong>Inclusions:</strong>Return air tickets,Premium hotel stays,Meals (buffet or set menu),Spiritual guides and group support. </p>
+                    <p><strong>Exclusions:</strong>Individual sightseeing or personal add-ons. </p>
+                   <p><strong>Booking Information:</strong>Limited slots for this short package; book early.</p>
+                    <p><strong>Duration:</strong> 10 days (ideal for professionals with tight schedules).</p>
+                `
+            },
+            'umrah14days': {
+                title: "Exclusive Umrah Package 14 Days",
+                price: "BDT 1,42,000/Per Person",
+                mainImage: "{% static 'img/h-4.jpeg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>Masjid Al-Haram and Masjid An-Nabawi for a spiritually enriching Umrah.Enjoy stays at hotels like Zamzam Pullman Makkah or Crowne Plaza Madinah.Participate in group prayers, city tours, and religious discussions. </p>
+                    <p><strong>Inclusions:</strong> Airfare, visa, and hotel. Daily meals (Iftar, Suhoor during Ramadan; breakfast/lunch/dinner otherwise),Transport between,Makkah and Madinah,Umrah guide services.</p>
+                    <p><strong>Exclusions:</strong>Optional tours like Taif or Jeddah sightseeing.</p>
+                     <p><strong>Booking Information:</strong>Advance booking recommended, especially during peak seasons.</p>
+                    <p><strong>Duration:</strong> 14 days including travel.</p>
+                `
+            },
+            'ramadan': {
+                title: "First Ramadan Umrah Package",
+                price: "BDT 1,55,000/Per Person",
+                mainImage: "{% static 'img/h-5.webp' %}",
+                description: `
+                   <p><strong>Highlights:</strong>Feel the beauty of Ramadan in Makkah and Madinah, performing Taraweeh at Masjid Al-Haram and Masjid An-Nabawi.Stay in hotels like Swissotel Al Maqam Makkah or Al Eiman Royal Madinah.Participate in special Ramadan programs, group Iftar, and community Suhoor. </p>
+                    <p><strong>Inclusions:</strong>Flights, visa, hotels. Iftar & Suhoor buffets.Transport between cities. Guided Umrah and spiritual lectures.</p>
+                    <p><strong>Exclusions:</strong>Shopping, personal tips, or extra services.</p>
+                     <p><strong>Booking Information:</strong>Ramadan packages sell out quickly; secure your seat early.</p>
+                    <p><strong>Duration:</strong> 16 days covering first 10 days of Ramadan.</p>
+                `
+            },
+            'itikaf': {
+                title: "I'tikaf in Makkah-16 Days Package",
+                price: "BDT 1,60,000/Per Person",
+                mainImage: "{% static 'img/h-6.jpg' %}",
+                description: `
+                   <p><strong>Highlights:</strong>Spend the last 10 days of Ramadan in I'tikaf at Masjid Al-Haram, focusing on prayer, reflection, and spiritual growth.Stay at nearby hotels like Makkah Clock Royal Tower - Fairmont.Access to special religious sessions and group activities. </p>
+                    <p><strong>Inclusions:</strong>Flights, hotel accommodation.Iftar, Suhoor, and snacks. Religious programs and sessions.</p>
+                    <p><strong>Exclusions:</strong>Personal laundry or shopping.</p>
+                     <p><strong>Booking Information:</strong>Very limited capacity; book months in advance.</p>
+                    <p><strong>Duration:</strong> 16 days including travel and pre-I'tikaf days.</p>
+                `
+            },
+            '21days': {
+                title: "21 Days Budget Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                mainImage: "{% static 'img/h-7.jpg' %}",
+                description: `
+                  <p><strong>Highlights:</strong>Affordable Hajj without compromising key services.Accommodation near Masjid Al-Haram at selected budget-friendly hotels.Complete Hajj rituals with guided support.</p>
+                    <p><strong>Inclusions:</strong>Flights, hotel stays. Daily meals. Ground transportation, Hajj support.</p>
+                    <p><strong>Exclusions:</strong>Personal items, shopping, and non-included activities.</p>
+                     <p><strong>Booking Information:</strong>Best for budget-conscious pilgrims; book early.</p>
+                    <p><strong>Duration:</strong> 21 days including travel.</p>
+                `
+            },
+            '16days': {
+                title: "16 Days Exclusive Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                mainImage: "{% static 'img/h-11.jpg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>Shorter exclusive Hajj for those with limited time.Stay in luxury hotels like Elaf Kinda Hotel or Dallah Taibah Madinah.Full guidance through every ritual. </p>
+                    <p><strong>Inclusions:</strong>Flights, hotel, meals.Transport and guided services.</p>
+                    <p><strong>Exclusions:</strong>Any services outside the listed inclusions.</p>
+                     <p><strong>Booking Information:</strong>Secure your place well ahead.</p>
+                    <p><strong>Duration:</strong> 16 days including travel.</p>
+                `
+            },
+            '35days': {
+                title: "35 Days Shifting Hajj Package",
+                price: "BDT 6,70,000/Per Person",
+                mainImage: "{% static 'img/h-9.jpg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>Stay in both Makkah and Madinah with shifting arrangements to optimize comfort.Hotels include Pullman Zamzam Makkah and Anwar Al Madinah Mövenpick.Complete Hajj experience with all rituals and transport covered. </p>
+                    <p><strong>Inclusions:</strong>Flights, hotels, meals.Ground transfers, Hajj rituals. Group leaders and scholar support.</p>
+                    <p><strong>Exclusions:</strong> Personal extras.</p>
+                     <p><strong>Booking Information:</strong>Plan and book early due to shifting logistics.</p>
+                    <p><strong>Duration:</strong> 35 days including pre-Hajj orientation.</p>
+                `
+            },
+            'madinah': {
+                title: "I'tikaf in Madina-16 Days package",
+                price: "BDT 1,55,000/Per Person",
+                mainImage: "{% static 'img/h-10.jpg' %}",
+                description: `
+                    <p><strong>Highlights:</strong>Spend the last 10 days of Ramadan in I'tikaf at Masjid An-Nabawi.Stay at nearby hotels like Dallah Taibah Hotel or Madinah Hilton.Join religious discussions, Quran sessions, and nightly Taraweeh. </p>
+                    <p><strong>Inclusions:</strong> Flights, hotels, Iftar & Suhoor. Religious sessions and group support.</p>
+                    <p><strong>Exclusions:</strong>Personal purchases or additional services.</p>
+                     <p><strong>Booking Information:</strong>Highly limited; book several months in advance.</p>
+                    <p><strong>Duration:</strong> 16 days including travel days.</p>
+                `
+            },
+            'december': {
+                title: "December Umrah Package-14 Days",
+                price: "BDT 1,30,000/Per Person",
+                mainImage: "{% static 'img/h-8.jpeg' %}",
+                description: `
+                  <p><strong>Highlights:</strong>Winter Umrah with fewer crowds and pleasant weather.Stay at Dar Al Eiman Royal Hotel Makkah or Madinah Oberoi.Visit historical Islamic sites and perform Umrah with ease. </p>
+                    <p><strong>Inclusions:</strong>Airfare, visa, hotels, meals.Local transport and Umrah guidance.</p>
+                    <p><strong>Exclusions:</strong>Optional Ziyarah (site tours) or personal shopping.</p>
+                     <p><strong>Booking Information:</strong>Best rates available when booked early.</p>
+                    <p><strong>Duration:</strong> 14 days including travel.</p>
+                `
+            },
+            'eid': {
+                title: "After Eid Umarah Package-20 Days",
+                price: "BDT 1,50,000/Per Person",
+                mainImage: "{% static 'img/h-12.jpg' %}",
+                description: `
+                   <p><strong>Highlights:</strong>Calm post-Eid Umrah for reflection and connection.Stay near Masjid Al-Haram and Masjid An-Nabawi.Visit landmarks like Mount Uhud and Quba Mosque.</p>
+                    <p><strong>Inclusions:</strong>Flights, hotels, daily meals.Guided Umrah services.</p>
+                    <p><strong>Exclusions:</strong>Personal spending.</p>
+                     <p><strong>Booking Information:</strong>Plan ahead for best availability.</p>
+                    <p><strong>Duration:</strong> 20 days including travel.</p>
+                `
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageId = urlParams.get('id');
+
+            if (packageId && hajjPackages[packageId]) {
+                const package = hajjPackages[packageId];
+
+                // Update package details display
+                document.getElementById('hajjPackageTitle').textContent = package.title;
+                document.getElementById('hajjPackagePrice').textContent = package.price;
+                document.getElementById('hajjPackageDescription').innerHTML = package.description;
+
+                const mainImg = document.getElementById('HajjMainImg');
+                mainImg.src = package.mainImage;
+                mainImg.alt = package.title;
+            }
+        });
+
+    </script>
+
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+    <script src="http://kit.fontawesome.com/c4254e24a8.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+</body>
+
+</html>

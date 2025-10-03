@@ -2049,7 +2049,74 @@ body.dark-mode .navigation a {
     font-weight: 700;
 }
 
+/* Hajj Package Details */
+.hajj-packdetails {
+    display: flex;
+    margin-top: 50px;
+}
 
+.hajj-packdetails .single-pro-img {
+    width: 40%;
+    margin-right: 50px;
+}
+
+.hajj-packdetails .hajj-pro-details {
+    width: 50%;
+    padding-top: 40px;
+}
+
+.hajj-packdetails .hajj-pro-details h4 {
+    font-size: 15px;
+    padding: 15px 0 10px 0;
+}
+
+.hajj-packdetails .hajj-pro-details h2 {
+    font-size: 26px;
+}
+
+.hajj-pro-details .normal {
+    display: inline-block;
+    padding: 7px 18px;
+    background: #FFB22C;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 15px 0;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hajj-pro-details .normal:hover {
+    background: #e6a027;
+}
+
+.hajj-packdetails .hajj-pro-details span {
+    line-height: 20px;
+}
+
+/* Package Description Styling */
+#hajjPackageDescription {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+#hajjPackageDescription p {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+#hajjPackageDescription strong {
+    color: #FFB22C;
+    font-weight: 700;
+}
 
 
 
