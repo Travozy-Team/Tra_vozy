@@ -54,7 +54,7 @@
         <div class="single-pro-details">
             <h4 id="packageTitle">Package Title</h4>
             <h2 id="packagePrice">Package Price</h2>
-            <a href="#" id="bookNowBtn" class="normal">Book Now</a>
+            <a href="form.html?id=${packageId}" id="bookNowBtn" class="normal">Book Now</a>
             <h4>Package Details</h4>
             <span id="packageDescription">Package detais will be loaded here...</span>
         </div>
@@ -303,9 +303,30 @@
                 });
 
                 initImageGallery();
+
+
+                const bookNowBtn = document.getElementById('bookNowBtn');
+                if (bookNowBtn) {
+                    bookNowBtn.href = `/booking_form?id=${packageId}`;
+
+                    bookNowBtn.addEventListener('click', function (e) {
+                        // Optional: Add any pre-redirect logic here
+                        console.log(`Redirecting to booking form for ${packageId}`);
+                    });
+                }
+            } else {
+                // If package not found
+                document.getElementById('packageTitle').textContent = "Package Not Found";
+
+                // Disable or hide the Book Now button if package not found
+                const bookNowBtn = document.getElementById('bookNowBtn');
+                if (bookNowBtn) {
+                    bookNowBtn.style.display = 'none';
+                    // OR: bookNowBtn.disabled = true;
+                }
             }
-        }
-        )
+        });
+
 
 
         // Keep your existing initImageGallery function

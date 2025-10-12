@@ -9,6 +9,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
+from .models import Booking
+from .forms import BookingForm
 
 
 def register_view(request):
@@ -156,3 +158,55 @@ def package_details(request):
 
 def hajj_package_details(request): 
     return render(request, 'Tra_vozy/shajjpack.html')
+
+def booking_form(request):
+    return render(request, 'Tra_vozy/form.html')
+
+
+def booking_page(request):
+    """Display the booking form page"""
+    form = BookingForm()
+    return render(request, 'your_booking_template.html', {'form': form})
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def submit_booking(request):
+    """Handle booking form submission via AJAX"""
+    try:
+        # Get JSON data from request
+        data = json.loads(request.body)
+        
+        # Create new booking instance
+        booking = Booking(
+            package_id=data.get('packageId'),
+            package_type=data.get('packageType', 'tour'),
+            package_title=data.get('packageTitle'),
+            package_price=data.get('packagePrice'),
+            full_name=data.get('fullName'),
+            email=data.get('email').lower(),
+            phone=data.get('phone'),
+            travel_date=data.get('travelDate'),
+            number_of_travelers=int(data.get('travelers', 1)),
+            special_requests=data.get('specialRequests', '')
+        )
+        
+        # Save to database
+        booking.save()
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'Booking submitted successfully! We will contact you shortly.',
+            'booking_id': booking.id
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'message': f'Error submitting booking: {str(e)}'
+        })
+
+def booking_list(request):
+    """View all bookings (for admin)"""
+    bookings = Booking.objects.all()
+    return render(request, 'booking_list.html', {'bookings': bookings})
+

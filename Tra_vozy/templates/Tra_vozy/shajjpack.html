@@ -51,7 +51,8 @@
         <div class="hajj-pro-details">
             <h4 id="hajjPackageTitle">Hajj Package Title</h4>
             <h2 id="hajjPackagePrice">Package Price</h2>
-            <a href="#" id="hajjBookNowBtn" class="normal">Book Now</a>
+            <a href="{% url 'booking_form' %}?type=hajj&id={{ packageId }}" id="hajjBookNowBtn" class="normal">Book
+                Now</a>
             <h4>Package Details</h4>
             <span id="hajjPackageDescription">Hajj package details will be loaded here...</span>
         </div>
@@ -269,6 +270,26 @@
                 const mainImg = document.getElementById('HajjMainImg');
                 mainImg.src = package.mainImage;
                 mainImg.alt = package.title;
+
+                const bookNowBtn = document.getElementById('hajjBookNowBtn');
+                if (bookNowBtn) {
+                    bookNowBtn.href = "{% url 'booking_form' %}?type=hajj&id=" + packageId;
+
+                    bookNowBtn.addEventListener('click', function (e) {
+                        console.log(`Booking Hajj package: ${packageId}`);
+
+                    });
+                }
+
+            } else {
+                document.getElementById('hajjPackageTitle').textContent = "Package Not Found";
+                document.getElementById('hajjPackageDescription').textContent = "The requested Hajj package could not be found. Please return to the Hajj Packages page and select a valid package.";
+
+                // Disable Book Now button if package not found
+                const bookNowBtn = document.getElementById('hajjBookNowBtn');
+                if (bookNowBtn) {
+                    bookNowBtn.style.display = 'none';
+                }
             }
         });
 

@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website With Login & Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Complete Your Booking</h2>
+            <p>Fill in your details to confirm your tour package</p>
+        </div>
+
+        <div class="form-content">
+
+            <div class="package-info" id="packageInfo">
+                <h3 id="packageTitle">Your Selected Package</h3>
+                <img src="" alt="Package Image" class="package-image" id="packageImage">
+                <p><strong>Price:</strong> <span id="packagePrice">--</span></p>
+                <p><strong>Duration:</strong> <span id="packageDuration">--</span></p>
+                <div id="packageDetails">
+
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="form-fields">
+                <form id="bookingForm">
+                    {% csrf_token %}
+                    <input type="hidden" id="packageId">
+                    <input type="hidden" id="packageType">
+                    <input type="hidden" id="packageTitleHidden">
+                    <input type="hidden" id="packagePriceHidden">
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" required autocomplete="off" style="text-transform: lowercase;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="travelDate">Travel Date*</label>
+                        <input type="date" id="travelDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="travelers">Number of Travelers*</label>
+                        <input type="number" id="travelers" min="1" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests</label>
+                        <textarea id="specialRequests" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="successMessage" class="success-message">
+        Booking submitted successfully! We will contact you shortly.
+        <span class="close-message">&times;</span>
+    </div>
+
+
+    <script>
+        // tour-Package data 
+        const packages = {
+            'peru': {
+                title: "Peru Adventure Package",
+                price: "BDT 2,50,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/p-9.jpeg' %}",
+                details: "Explore the stunning landscapes and ancient wonders of Peru including Machu Picchu, the Sacred Valley, and Lima."
+            },
+            'greece': {
+                title: "Greek Islands Package",
+                price: "BDT 1,75,000",
+                duration: "5 Days / 4 Nights",
+                image: "{% static 'img/greece-4.jpg' %}",
+                details: "Experience the vibrant energy and ancient history of Greece with visits to Athens, Santorini, and Mykonos."
+            },
+            'turkey': {
+                title: "Turkey Cultural Tour",
+                price: "BDT 1,50,000",
+                duration: "6 Days / 5 Nights",
+                image: "{% static 'img/p-7.jpg' %}",
+                details: "Explore the rich cultural heritage of Turkey from Istanbul to Cappadocia."
+            },
+            'madagascar': {
+                title: "Madagascar Wildlife Tour",
+                price: "BDT 2,40,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/p-10.jpeg' %}",
+                details: "Discover unique wildlife and landscapes in Madagascar."
+            },
+            'new zealand': {
+                title: "New Zealand Adventure",
+                price: "BDT 3,35,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/p-8.jpeg' %}",
+                details: "Experience the breathtaking scenery of New Zealand."
+            },
+            'jordan': {
+                title: "Jordan Historical Tour",
+                price: "BDT 1,25,999",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/jordan-1.avif' %}",
+                details: "Explore the ancient wonders of Jordan including Petra."
+            },
+            'mexico': {
+                title: "Mexico Cultural Tour",
+                price: "BDT 1,00,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/maxico-1.jpeg' %}",
+                details: "Discover the rich culture and history of Mexico."
+            },
+            'japan': {
+                title: "Japan Discovery Tour",
+                price: "BDT 80,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/p-4.jpg' %}",
+                details: "Experience the perfect blend of tradition and modernity in Japan."
+            },
+            'south australia': {
+                title: "South Australia Tour",
+                price: "BDT 70,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/au-1.jpeg' %}",
+                details: "Explore the beautiful landscapes of South Australia."
+            },
+            'antarctic': {
+                title: "Antarctic Expedition",
+                price: "BDT 1,00,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/Antarctica-5.webp' %}",
+                details: "Journey to the breathtaking landscapes of Antarctica."
+            },
+            'namibia': {
+                title: "Namibia Safari",
+                price: "BDT 1,50,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/namibia-1.jpeg' %}",
+                details: "Experience the stunning deserts and wildlife of Namibia."
+            },
+            'iceland': {
+                title: "Iceland Adventure",
+                price: "BDT 1,00,000",
+                duration: "7 Days / 6 Nights",
+                image: "{% static 'img/iceland-2.jpg' %}",
+                details: "Discover the natural wonders of Iceland."
+            }
+        };
+
+        // Hajj packages data (complete list)
+        const hajjPackages = {
+            '40days': {
+                title: "40 Days Exclusive Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                duration: "40 Days / 39 Nights",
+                image: "{% static 'img/h-1.jpg' %}",
+                details: "Complete 40-day Hajj experience with premium accommodations near Haram. Includes guided ziyarat, educational sessions, and dedicated mutawwif."
+            },
+            '30days': {
+                title: "30 Days Non-Shifting Hajj Package",
+                price: "BDT 6,50,000/Per Person",
+                duration: "30 Days / 29 Nights",
+                image: "{% static 'img/h-2.jpeg' %}",
+                details: "Stay in the same hotel throughout Hajj with no shifting required. Premium location within 500m of Masjid al-Haram."
+            },
+            '10days': {
+                title: "Exclusive 10 Days Short Hajj Package",
+                price: "BDT 6,00,000/Per Person",
+                duration: "10 Days / 9 Nights",
+                image: "{% static 'img/h-3.jpeg' %}",
+                details: "Intensive Hajj program for those with limited time. Includes all essential rites with maximum comfort."
+            },
+            'umrah14days': {
+                title: "Exclusive Umrah Package 14 Days",
+                price: "BDT 1,42,000/Per Person",
+                duration: "14 Days / 13 Nights",
+                image: "{% static 'img/h-4.jpeg' %}",
+                details: "Spiritual journey covering Makkah and Madinah with ziyarat programs. Includes economy flights and 4-star hotels."
+            },
+            'ramadan': {
+                title: "First Ramadan Umrah Package",
+                price: "BDT 1,55,000/Per Person",
+                duration: "16 Days / 15 Nights",
+                image: "{% static 'img/h-5.webp' %}",
+                details: "Experience the blessings of Ramadan in the holy cities with Taraweeh at Haram. Includes iftar and suhoor meals."
+            },
+            'itikaf': {
+                title: "I'tikaf in Makkah-16 Days Package",
+                price: "BDT 1,60,000/Per Person",
+                duration: "16 Days / 15 Nights",
+                image: "{% static 'img/h-6.jpg' %}",
+                details: "Spiritual retreat during last 10 days of Ramadan with I'tikaf arrangement at Masjid al-Haram."
+            },
+            '21days': {
+                title: "21 Days Budget Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                duration: "21 Days / 20 Nights",
+                image: "{% static 'img/h-7.jpg' %}",
+                details: "Affordable Hajj package covering all essentials with 3-star hotels and basic meals."
+            },
+            '16days': {
+                title: "16 Days Exclusive Hajj Package",
+                price: "BDT 5,80,000/Per Person",
+                duration: "16 Days / 15 Nights",
+                image: "{% static 'img/h-11.jpg' %}",
+                details: "Short but comprehensive Hajj program with premium services including business class flights."
+            },
+            '35days': {
+                title: "35 Days Shifting Hajj Package",
+                price: "BDT 6,70,000/Per Person",
+                duration: "35 Days / 34 Nights",
+                image: "{% static 'img/h-9.jpg' %}",
+                details: "Traditional Hajj experience with shifting between Makkah, Mina, and Arafat locations."
+            },
+            'madinah': {
+                title: "I'tikaf in Madina-16 Days package",
+                price: "BDT 1,55,000/Per Person",
+                duration: "16 Days / 15 Nights",
+                image: "{% static 'img/h-10.jpg' %}",
+                details: "Spiritual retreat at Masjid an-Nabawi during Ramadan with hotel near the Prophet's Mosque."
+            },
+            'december': {
+                title: "December Umrah Package-14 Days",
+                price: "BDT 1,30,000/Per Person",
+                duration: "14 Days / 13 Nights",
+                image: "{% static 'img/h-8.jpeg' %}",
+                details: "Winter Umrah with pleasant weather conditions and visits to historical sites."
+            },
+            'eid': {
+                title: "After Eid Umarah Package-20 Days",
+                price: "BDT 1,50,000/Per Person",
+                duration: "20 Days / 19 Nights",
+                image: "{% static 'img/h-12.jpg' %}",
+                details: "Extended Umrah after Eid celebrations with relaxed schedule and comprehensive ziyarat program."
+            }
+        };
+
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageType = urlParams.get('type');
+            const packageId = urlParams.get('id');
+
+
+            const packageCollection = packageType === 'hajj' ? hajjPackages : packages;
+            const package = packageId ? packageCollection[packageId] : null;
+
+            if (package) {
+
+                document.getElementById('packageTitle').textContent = package.title;
+                document.getElementById('packagePrice').textContent = package.price;
+                document.getElementById('packageDuration').textContent = package.duration;
+                document.getElementById('packageDetails').textContent = package.details;
+                document.getElementById('packageImage').src = package.image;
+                document.getElementById('packageImage').alt = package.title;
+
+
+                document.getElementById('packageId').value = packageId;
+                document.getElementById('packageType').value = packageType || 'tour';
+                document.getElementById('packageTitleHidden').value = package.title;
+                document.getElementById('packagePriceHidden').value = package.price;
+
+
+                const today = new Date();
+                const formattedDate = today.toISOString().split('T')[0];
+                document.getElementById('travelDate').value = formattedDate;
+            } else {
+
+                const redirectUrl = packageType === 'hajj' ? '{% url "hajj" %}' : '{% url "tour-packages" %}';
+                window.location.href = redirectUrl;
+            }
+
+            document.getElementById('bookingForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+
+                const formData = {
+                    packageId: document.getElementById('packageId').value,
+                    packageType: document.getElementById('packageType').value,
+                    packageTitle: document.getElementById('packageTitleHidden').value,
+                    packagePrice: document.getElementById('packagePriceHidden').value,
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value.toLowerCase(),
+                    phone: document.getElementById('phone').value,
+                    travelDate: document.getElementById('travelDate').value,
+                    travelers: document.getElementById('travelers').value,
+                    specialRequests: document.getElementById('specialRequests').value
+                };
+
+                fetch('/submit-booking/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+
+                            const successMessage = document.getElementById('successMessage');
+                            successMessage.style.display = 'block';
+
+
+                            document.getElementById('bookingForm').reset();
+
+
+                            const today = new Date();
+                            const formattedDate = today.toISOString().split('T')[0];
+                            document.getElementById('travelDate').value = formattedDate;
+                            document.getElementById('travelers').value = '1';
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the booking.');
+                    });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('close-message')) {
+                    document.getElementById('successMessage').style.display = 'none';
+                }
+            });
+
+            setTimeout(() => {
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage.style.display === 'block') {
+                    successMessage.style.display = 'none';
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>
