@@ -14,6 +14,7 @@ from .forms import BookingForm
 from .models import Contact
 
 
+
 def register_view(request):
     """
     Handle user registration

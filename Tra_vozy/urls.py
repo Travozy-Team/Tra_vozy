@@ -23,4 +23,8 @@ path('booking_form/', views.booking_form, name='booking_form'),
     path('booking/', views.booking_page, name='booking'),
     path('submit-booking/', views.submit_booking, name='submit_booking'),
     path('admin/bookings/', views.booking_list, name='booking_list'),
+
+
+    path('payment/<int:booking_id>/', views.payment_page, name='payment'),
+    path('payment/', views.payment_page, name='payment'), 
 ]

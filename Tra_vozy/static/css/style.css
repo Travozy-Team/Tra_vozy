@@ -2590,3 +2590,132 @@ textarea {
         opacity: 1;
     }
 }
+
+
+/*============ Payment============ */
+.payment-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ background: #f9f9f9;
+ padding: 25px;
+}
+
+        .payment-container form {
+            width: 700px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .payment-column {
+            flex: 1 1 250px;
+        }
+
+        .payment-title {
+            font-size: 20px;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .payment-input-box {
+            margin: 15px 0;
+        }
+
+        .payment-input-box span {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .payment-input-box input {
+            width: 100%; 
+            padding: 10px 15px;
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .payment-flex {
+            display: flex;
+            gap: 15px;
+        }
+
+        .payment-flex .payment-input-box {
+            margin-top: 5px;
+            flex: 1;
+        }
+
+        .payment-cards {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .payment-card-icon {
+            height: 30px;
+            width: 48px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .payment-amex { background: #1f72cd; }
+        .payment-apple { background: #000; }
+        .payment-google { background: #4285f4; }
+        .payment-mastercard { background: #eb001b; }
+        .payment-shop { background: #5a31f4; }
+        .payment-visa { background: #1a1f71; }
+
+        .payment-btn {
+            width: 100%;
+            padding: 12px;
+            background: #FFB22C;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            font-size: 17px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: .5s;
+            color: white;
+            font-weight: bold;
+        }
+
+        .payment-btn:hover {
+            background:#e6a027;
+        }
+
+        .payment-booking-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .payment-booking-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .payment-booking-info p {
+            margin: 5px 0;
+            color: #666;
+        }

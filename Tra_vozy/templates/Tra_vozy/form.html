@@ -70,7 +70,7 @@
                         <textarea id="specialRequests" rows="4"></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">Confirm Booking</button>
+                    <button type="submit" class="submit-btn">Procced to payment</button>
                 </form>
             </div>
         </div>
@@ -338,17 +338,8 @@
                     .then(data => {
                         if (data.success) {
 
-                            const successMessage = document.getElementById('successMessage');
-                            successMessage.style.display = 'block';
+                         window.location.href = data.redirect_url;
 
-
-                            document.getElementById('bookingForm').reset();
-
-
-                            const today = new Date();
-                            const formattedDate = today.toISOString().split('T')[0];
-                            document.getElementById('travelDate').value = formattedDate;
-                            document.getElementById('travelers').value = '1';
                         } else {
                             alert('Error: ' + data.message);
                         }
