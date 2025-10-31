@@ -11,6 +11,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from .models import Booking
 from .forms import BookingForm
+from .models import Contact
 
 
 def register_view(request):
@@ -210,3 +211,27 @@ def booking_list(request):
     bookings = Booking.objects.all()
     return render(request, 'booking_list.html', {'bookings': bookings})
 
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        # Validate that all fields are provided
+        if name and email and subject and message:
+            # Create and save the contact entry
+            contact_entry = Contact(
+                name=name,
+                email=email,
+                subject=subject,
+                message=message
+            )
+            contact_entry.save()
+            
+            messages.success(request, 'Your message has been sent successfully! We will get back to you soon.')
+            return redirect('contact')
+        else:
+            messages.error(request, 'Please fill in all fields.')
+    
+    return render(request, 'Tra_vozy/contact.html')
