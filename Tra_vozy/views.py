@@ -12,7 +12,7 @@ import json
 from .models import Booking
 from .forms import BookingForm
 from .models import Contact
-
+from .models import  Payment 
 
 
 def register_view(request):
@@ -170,6 +170,18 @@ def booking_page(request):
     form = BookingForm()
     return render(request, 'your_booking_template.html', {'form': form})
 
+def payment_page(request, booking_id=None):
+    """Display the payment page"""
+    context = {}
+    if booking_id:
+        try:
+            booking = Booking.objects.get(id=booking_id)
+            context['booking'] = booking
+        except Booking.DoesNotExist:
+            pass
+    return render(request, 'Tra_vozy/payment.html', context)
+
+
 @csrf_exempt
 @require_http_methods(["POST"])
 def submit_booking(request):
@@ -197,8 +209,9 @@ def submit_booking(request):
         
         return JsonResponse({
             'success': True,
-            'message': 'Booking submitted successfully! We will contact you shortly.',
-            'booking_id': booking.id
+            'message': 'Booking submitted successfully!',
+            'booking_id': booking.id,
+            'redirect_url': f'/payment/{booking.id}/'
         })
         
     except Exception as e:
@@ -236,3 +249,58 @@ def contact(request):
             messages.error(request, 'Please fill in all fields.')
     
     return render(request, 'Tra_vozy/contact.html')
+
+
+
+@require_http_methods(["POST"])
+def process_payment(request):
+    """Handle payment form submission"""
+    try:
+        booking_id = request.POST.get('booking_id')
+        card_name = request.POST.get('card_name')
+        card_number = request.POST.get('card_number')
+        exp_month = request.POST.get('exp_month')
+        exp_year = request.POST.get('exp_year')
+        cvv = request.POST.get('cvv')
+        
+        # Validate required fields
+        if not all([booking_id, card_name, card_number, exp_month, exp_year, cvv]):
+            messages.error(request, 'All payment fields are required.')
+            return redirect('payment', booking_id=booking_id)
+        
+        # Get booking
+        try:
+            booking = Booking.objects.get(id=booking_id)
+        except Booking.DoesNotExist:
+            messages.error(request, 'Booking not found.')
+            return redirect('index')
+        
+        # payment record with package_id from booking
+        payment_obj = Payment(
+            booking=booking,
+            package_id=booking.package_id, 
+            card_name=card_name,
+            card_number=card_number[-4:], 
+            exp_month=exp_month,
+            exp_year=exp_year,
+            payment_status='completed',
+            payment_method='card'
+        )
+        payment_obj.save()
+        
+        # booking status
+        booking.status = 'confirmed'
+        booking.save()
+        
+        return redirect('payment_success', booking_id=booking.id)
+        
+    except Exception as e:
+        messages.error(request, f'❌ Payment processing failed: {str(e)}')
+        if booking_id:
+            return redirect('payment', booking_id=booking_id)
+        return redirect('index')
+
+
+
+
+

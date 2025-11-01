@@ -52,5 +52,44 @@ class Booking(models.Model):
     
     def __str__(self):
         return f"{self.full_name} - {self.package_title}"
+    
+    
 
 
+class Payment(models.Model):
+    PAYMENT_STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('completed', 'Completed'),
+        ('failed', 'Failed'),
+        ('refunded', 'Refunded'),
+    ]
+    
+    PAYMENT_METHOD_CHOICES = [
+        ('card', 'Credit/Debit Card'),
+        ('bkash', 'bKash'),
+        ('nagad', 'Nagad'),
+        ('rocket', 'Rocket'),
+        ('bank', 'Bank Transfer'),
+    ]
+    
+    booking = models.OneToOneField('Booking', on_delete=models.CASCADE, related_name='payment')
+    card_name = models.CharField(max_length=100)
+    package_id = models.CharField(max_length=50, default='default_value') 
+    card_number = models.CharField(max_length=16)  
+    exp_month = models.CharField(max_length=20)
+    exp_year = models.CharField(max_length=4)
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='pending')
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES, default='card')
+    transaction_id = models.CharField(max_length=100, unique=True, blank=True, null=True)
+    payment_date = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Payment for {self.booking.full_name} - {self.booking.package_title}"
+    
+    def save(self, *args, **kwargs):
+        
+        if not self.transaction_id:
+            self.transaction_id = f"TXN{self.booking.id}{timezone.now().strftime('%Y%m%d%H%M%S')}"
+        super().save(*args, **kwargs)
