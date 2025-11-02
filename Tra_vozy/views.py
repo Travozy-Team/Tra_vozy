@@ -275,10 +275,10 @@ def process_payment(request):
             messages.error(request, 'Booking not found.')
             return redirect('index')
         
-        # payment record with package_id from booking
+        #payment record with package_id from booking
         payment_obj = Payment(
             booking=booking,
-            package_id=booking.package_id, 
+            package_id=booking.package_id,
             card_name=card_name,
             card_number=card_number[-4:], 
             exp_month=exp_month,
@@ -288,7 +288,7 @@ def process_payment(request):
         )
         payment_obj.save()
         
-        # booking status
+        #booking status
         booking.status = 'confirmed'
         booking.save()
         
@@ -301,6 +301,19 @@ def process_payment(request):
         return redirect('index')
 
 
+def payment_success(request, booking_id):
+    """Display payment success page"""
+    try:
+        booking = Booking.objects.get(id=booking_id)
+        payment = Payment.objects.get(booking=booking)
+        context = {
+            'booking': booking,
+            'payment': payment
+        }
+        return render(request, 'Tra_vozy/payment_success.html', context)
+    except (Booking.DoesNotExist, Payment.DoesNotExist):
+        messages.error(request, 'Booking or payment not found.')
+        return redirect('index')
 
 
 

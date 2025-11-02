@@ -2719,3 +2719,157 @@ textarea {
             margin: 5px 0;
             color: #666;
         }
+
+
+        /*======= Payment Success Page====== */
+.success-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 80px;
+    color: #FFB22C;
+    margin-bottom: 20px;
+}
+
+.success-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.booking-details {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+.booking-details-title {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.detail-value {
+    color: #666;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.btn-primary {
+   background: linear-gradient(45deg, #FFD700 0%, #FFB22C 50%, #FFA000 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #FFB22C;
+    border: 2px solid #FFB22C;
+    padding: 10px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #FFB22C;
+    color: white;
+    text-decoration: none;
+}
+
+.whats-next-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7f7ea;
+    border-radius: 10px;
+}
+
+.whats-next-title {
+    color:var(--golden);
+    margin-bottom: 10px;
+}
+
+.whats-next-text {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+    .success-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .success-title {
+        font-size: 24px;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

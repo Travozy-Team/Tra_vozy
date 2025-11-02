@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Payment Successful - Travozy</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Payment Success CSS -->
+    <link rel="stylesheet" href="{% static 'css/payment_success.css' %}">
+</head>
+
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        
+        <h1 class="success-title">Payment Successful!</h1>
+        
+        <p class="success-message">
+            Thank you for your booking! Your payment has been processed successfully. 
+            We will contact you shortly with further details about your trip.
+        </p>
+        
+        {% if booking %}
+        <div class="booking-details">
+            <h3 class="booking-details-title">Booking Details</h3>
+            
+            <div class="detail-row">
+                <span class="detail-label">Booking ID:</span>
+                <span class="detail-value">#{{ booking.id }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Package:</span>
+                <span class="detail-value">{{ booking.package_title }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Price:</span>
+                <span class="detail-value">{{ booking.package_price }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Customer Name:</span>
+                <span class="detail-value">{{ booking.full_name }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value">{{ booking.email }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Phone:</span>
+                <span class="detail-value">{{ booking.phone }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Travel Date:</span>
+                <span class="detail-value">{{ booking.travel_date }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Number of Travelers:</span>
+                <span class="detail-value">{{ booking.number_of_travelers }}</span>
+            </div>
+            
+            {% if payment %}
+            <div class="detail-row">
+                <span class="detail-label">Transaction ID:</span>
+                <span class="detail-value">{{ payment.transaction_id }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="detail-label">Payment Date:</span>
+                <span class="detail-value">{{ payment.payment_date|date:"F d, Y H:i" }}</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <div class="action-buttons">
+            <a href="{% url 'index' %}" class="btn-primary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            {% if booking.package_type == 'hajj' %}
+                <a href="{% url 'hajj' %}" class="btn-secondary">
+                    <i class="fas fa-search"></i> Browse More Hajj Packages
+                </a>
+            {% else %}
+                <a href="{% url 'tour-packages' %}" class="btn-secondary">
+                    <i class="fas fa-search"></i> Browse More Packages
+                </a>
+            {% endif %}
+        </div>
+        
+        <div class="whats-next-container">
+            <h4 class="whats-next-title">
+                <i class="fas fa-info-circle"></i> What's Next?
+            </h4>
+            <p class="whats-next-text">
+                Our team will contact you within 24 hours to confirm your booking details and provide further instructions. 
+                Please keep this booking reference for your records.
+            </p>
+        </div>
+    </div>
+
+    <!---footer-->
+    <footer class="footer" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out">
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'img/Capture.png' %}" class="logo" />
+                <p>Explore the world with Travozy</p>
+            </div>
+            <div class="col">
+                <h3>Office <div class="underline"><span></span></div>
+                </h3>
+                <p>O R Nizam Road, GEC</p>
+                <p>Chattagram, Bangladesh</p>
+                <p class="email-id">nahianafroz0@gmail.com</p>
+                <h4>+018273</h4>
+            </div>
+            <div class="col">
+                <h3>Links<div class="underline"><span></span></div>
+                </h3>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About us</a></li>
+                    <li><a href="{% url 'tour-packages' %}">Tour packages</a></li>
+                    <li><a href="{% url 'hajj' %}">Hajj Packages</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Newsletter<div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="far fa-envelope"></i>
+                    <input type="email" placeholder="Enter Email" required />
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </footer>
+    <!--footer-->
+
+
+<!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</html>
