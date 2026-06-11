@@ -561,22 +561,23 @@
             </div>
 
             <div class="col">
-                <h3>Newsletter<div class="underline"><span></span></div>
-                </h3>
-                <form>
-                    <i class="far fa-envelope"></i>
-                    <input type="email" placeholder="Enter Email" required />
-                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
-                </form>
-                <div class="social-icons">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
+    <h3>Newsletter<div class="underline"><span></span></div>
+    </h3>
+    <form method="POST" action="{% url 'newsletter_subscribe' %}">
+        {% csrf_token %}
+        <i class="far fa-envelope"></i>
+        <input type="email" name="email" placeholder="Enter Email" required />
+        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+    </form>
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+</div>
         <hr />
     </footer>
     <!--footer-->

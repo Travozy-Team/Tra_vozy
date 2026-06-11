@@ -93,3 +93,17 @@ class Payment(models.Model):
         if not self.transaction_id:
             self.transaction_id = f"TXN{self.booking.id}{timezone.now().strftime('%Y%m%d%H%M%S')}"
         super().save(*args, **kwargs)
+
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(default=timezone.now)
+    is_active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.email
+    
+    class Meta:
+        db_table = 'travozy_newslettersubscriber'  # ADD THIS LINE - matches your manually created table
+        ordering = ['-subscribed_at']
+        verbose_name = "Newsletter Subscriber"
+        verbose_name_plural = "Newsletter Subscribers"     

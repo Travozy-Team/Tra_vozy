@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from .models import Booking
+from .models import NewsletterSubscriber
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -54,3 +55,21 @@ class BookingForm(forms.ModelForm):
             'package_title': forms.HiddenInput(),
             'package_price': forms.HiddenInput(),
         }
+
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscriber
+        fields = ['email']
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'Enter Email',
+                'class': 'newsletter-input',
+                'required': True
+            })
+        }
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if NewsletterSubscriber.objects.filter(email=email).exists():
+            raise forms.ValidationError('This email is already subscribed!')
+        return email   

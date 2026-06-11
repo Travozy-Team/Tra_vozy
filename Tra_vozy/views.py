@@ -12,7 +12,9 @@ import json
 from .models import Booking
 from .forms import BookingForm
 from .models import Contact
-from .models import  Payment 
+from .models import  Payment
+from .models import NewsletterSubscriber
+from .forms import NewsletterForm
 
 
 def register_view(request):
@@ -314,6 +316,23 @@ def payment_success(request, booking_id):
     except (Booking.DoesNotExist, Payment.DoesNotExist):
         messages.error(request, 'Booking or payment not found.')
         return redirect('index')
-
-
-
+    
+def newsletter_subscribe(request):
+    """Handle newsletter subscription"""
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully subscribed to our newsletter! 🎉')
+        else:
+            # Check if error is due to duplicate email
+            if 'email' in form.errors and 'already subscribed' in str(form.errors['email']):
+                messages.warning(request, 'This email is already subscribed to our newsletter!')
+            else:
+                messages.error(request, 'Please enter a valid email address.')
+        
+        # Redirect back to the page user came from
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('index')))
+    
+    return HttpResponseRedirect(reverse('index'))

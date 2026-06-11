@@ -29,5 +29,6 @@ path('booking_form/', views.booking_form, name='booking_form'),
     path('payment/', views.payment_page, name='payment'), 
     path('process-payment/', views.process_payment, name='process_payment'),  
     path('payment-success/<int:booking_id>/', views.payment_success, name='payment_success'),
-  
+    path('newsletter-subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
+
 ]
