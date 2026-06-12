@@ -429,7 +429,6 @@
     <script src="{% static 'js/script.js' %}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="http://kit.fontawesome.com/c4254e24a8.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
@@ -461,8 +460,7 @@
         }
 
         loadMoreBtn.addEventListener('click', showMore);
-
-        // Add click events for package boxes and links
+// Add click events for package boxes and links
         document.querySelectorAll('.box').forEach(box => {
             box.addEventListener('click', function (e) {
                 if (e.target.tagName !== 'A') {
@@ -471,8 +469,8 @@
                 }
             });
         });
-
-        // Add click events for View Details links
+        
+// Add click events for View Details links
         document.querySelectorAll('.package-link').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -480,6 +478,7 @@
                 window.location.href = packageDetailsUrl + '?id=' + packageId;
             });
         });
+        
     </script>
 </body>
 

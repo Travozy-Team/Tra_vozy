@@ -151,7 +151,7 @@
         </video>
         <div class="contact-header-content">
             <h2>#Let's_talk</h2>
-            <p>LEAVE A MEASSAGE,WE LOVE TO HEAR FROM YOU!</p>
+            <p>LEAVE A MESSAGE,WE LOVE TO HEAR FROM YOU!</p>
         </div>
     </section>
 
@@ -190,16 +190,7 @@
 
     <section id="form-details" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="1500">
 
-        <!-- Display Django messages -->
-        {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+
 
         <form method="post" action="{% url 'contact' %}">
             {% csrf_token %}
@@ -283,7 +274,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();

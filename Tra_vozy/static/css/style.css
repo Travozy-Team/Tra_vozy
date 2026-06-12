@@ -546,7 +546,7 @@ input[type="email"]::-webkit-input-placeholder {
 
 .alert-error::before,
 .alert-danger::before {
-    content: "x";
+content: "x";
     position: absolute;
     left: 12px;
     top: 50%;
