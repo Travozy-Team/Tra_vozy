@@ -2591,15 +2591,17 @@ textarea {
     }
 }
 
-
 /*============ Payment============ */
 .payment-container {
  display: flex;
  justify-content: center;
  align-items: center;
  min-height: 100vh;
- background: #f9f9f9;
  padding: 25px;
+}
+
+.booking-info{
+    color: #000;
 }
 
         .payment-container form {
@@ -2721,6 +2723,7 @@ textarea {
         }
 
 
+
         /*======= Payment Success Page====== */
 .success-container {
     max-width: 800px;
@@ -2826,6 +2829,7 @@ textarea {
     text-decoration: none;
 }
 
+/* Whats Next Section */
 .whats-next-container {
     margin-top: 30px;
     padding: 20px;
@@ -2844,7 +2848,7 @@ textarea {
     line-height: 1.6;
 }
 
-
+/* Responsive Styles */
 @media (max-width: 768px) {
     .success-container {
         margin: 20px;
