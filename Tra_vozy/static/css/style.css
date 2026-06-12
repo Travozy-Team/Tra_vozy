@@ -55,11 +55,8 @@ section {
     background: #ffb22c;
     color: #000;
     font-weight: 500;
-    margin-left: 40px;
     margin-left: 20px;
-    /* Reduce left margin */
     flex-shrink: 0;
-    /* Prevent button from shrinking */
     transition: 0.5s;
     animation: animate 2s forwards;
 }
@@ -196,10 +193,10 @@ input[type="email"]::-webkit-input-placeholder {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* Increased height for registration form */
+
 .auth-wrapper.active {
     height: 560px;
-    /* Increased from 555px to 600px */
+  
 }
 
 .auth-wrapper .form-box {
@@ -264,10 +261,9 @@ input[type="email"]::-webkit-input-placeholder {
     text-transform: none;
 }
 
-/* Reduced margin for registration form to fit better */
+
 .form-box.register .input-box {
     margin: 25px 0;
-    /* Reduced from 30px to 25px */
 }
 
 .input-box label {
@@ -336,10 +332,9 @@ input[type="email"]::-webkit-input-placeholder {
     justify-content: space-between;
 }
 
-/* Adjusted margin for registration form checkbox */
 .form-box.register .remember-forgot {
     margin: -10px 0 15px;
-    /* Reduced top margin */
+   
 }
 
 .checkbox-label {
@@ -426,60 +421,6 @@ input[type="email"]::-webkit-input-placeholder {
     display: none;
 }
 
-/* ========= RESPONSIVE ADJUSTMENTS ============ */
-@media (max-width: 768px) {
-    .auth-wrapper {
-        width: 90%;
-    }
-
-    .auth-wrapper.active {
-        height: 650px;
-        /* Increased for mobile registration */
-    }
-
-    .form-box h2 {
-        font-size: 3em;
-    }
-
-    .input-box label {
-        font-size: 1.5em;
-    }
-
-    .input-box input {
-        font-size: 1.2em;
-    }
-
-    .btn {
-        font-size: 1.5em;
-    }
-}
-
-@media (max-width: 480px) {
-    .auth-wrapper {
-        height: auto;
-        min-height: 500px;
-        /* Added minimum height */
-        padding-bottom: 20px;
-    }
-
-    .auth-wrapper.active {
-        min-height: 700px;
-        /* Increased minimum height for registration */
-    }
-
-    .form-box h2 {
-        font-size: 2.5em;
-    }
-
-    .input-box label {
-        font-size: 1.2em;
-    }
-
-    .remember-forgot {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
 
 /* Messages Container */
 .messages {
@@ -519,16 +460,6 @@ input[type="email"]::-webkit-input-placeholder {
     border-left: 4px solid #4caf50;
 }
 
-.alert-success::before {
-    content: "✓";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-}
 
 .alert-success {
     padding-left: 45px;
@@ -544,17 +475,6 @@ input[type="email"]::-webkit-input-placeholder {
     border-left: 4px solid #f44336;
 }
 
-.alert-error::before,
-.alert-danger::before {
-content: "x";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-}
 
 .alert-error,
 .alert-danger {
@@ -1089,63 +1009,6 @@ body.dark-mode .navigation a {
     animation: popSlideUp 0.6s ease forwards;
 }
 
-/* Responsive Styles */
-@media (max-width: 1200px) {
-    .swiper-slide {
-        width: 320px;
-    }
-}
-
-@media (max-width: 992px) {
-    .swiper-slide {
-        width: 300px;
-    }
-
-    .card img {
-        height: 180px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container.swiper {
-        padding: 20px 0 30px;
-    }
-
-    .swiper-slide {
-        width: 280px;
-        padding: 0 10px;
-    }
-
-    .card {
-        padding: 15px;
-    }
-
-    .card-title {
-        font-size: 16px;
-    }
-
-    .swiper-button-prev,
-    .swiper-button-next {
-        width: 40px;
-        height: 40px;
-        display: none;
-    }
-}
-
-@media (max-width: 576px) {
-    .swiper-slide {
-        width: 260px;
-    }
-
-    .card img {
-        height: 160px;
-    }
-
-    .badge {
-        font-size: 12px;
-        padding: 5px 12px;
-    }
-}
 
 /*banner section*/
 .banner {
@@ -1935,27 +1798,9 @@ body.dark-mode .navigation a {
 
 
 
-#loadMore {
-    display: block;
-    margin: 2rem auto;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    color: #fff;
-    background-color: var(--golden);
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#loadMore:hover {
-    background-color: #f39c12;
-}
-
 .box[data-visible="false"] {
     display: none;
 }
-
 
 
 /*single tour pack */
@@ -2358,39 +2203,6 @@ p {
     gap: 40px;
 }
 
-
-.messages {
-    margin: 20px 0;
-}
-
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.alert-error {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-
-
-
-
-
-
-
-
-
 /* ========= booking form ============ */
 .package-info {
     flex: 1;
@@ -2451,144 +2263,6 @@ textarea {
 
 .submit-btn:hover {
     background: #e6a027;
-}
-
-.success-message {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFB22C;
-    color: white;
-    padding: 30px 50px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    text-align: center;
-    font-weight: 500;
-    font-size: 16px;
-    animation: fadeIn 0.3s;
-}
-
-.close-message {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-
-/* ========= booking form ============ */
-.package-info {
-    flex: 1;
-    background: #f9f9f9;
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 4px solid #FFB22C;
-}
-
-.package-info h3 {
-    color: #FFB22C;
-    margin-top: 0;
-    font-size: 16px;
-}
-
-.package-image {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.form-fields {
-    flex: 1;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.submit-btn {
-    background: #FFB22C;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    width: 100%;
-    transition: background 0.3s;
-}
-
-.submit-btn:hover {
-    background: #e6a027;
-}
-
-.success-message {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFB22C;
-    color: white;
-    padding: 30px 50px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    text-align: center;
-    font-weight: 500;
-    font-size: 16px;
-    animation: fadeIn 0.3s;
-}
-
-.close-message {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }
 
 /*============ Payment============ */
@@ -2846,34 +2520,4 @@ textarea {
     color: #555;
     margin: 0;
     line-height: 1.6;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .success-container {
-        margin: 20px;
-        padding: 20px;
-    }
-    
-    .success-title {
-        font-size: 24px;
-    }
-    
-    .detail-row {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .btn-primary, .btn-secondary {
-        display: block;
-        margin: 10px 0;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .action-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
 }
