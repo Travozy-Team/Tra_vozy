@@ -147,7 +147,7 @@ input[type="password"]:focus {
     -webkit-text-transform: none !important;
 }
 
-/* Specific fix for webkit browsers */
+
 input[type="text"]::-webkit-input-placeholder,
 input[type="email"]::-webkit-input-placeholder {
     text-transform: none !important;

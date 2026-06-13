@@ -3,7 +3,7 @@ const scrollReveal = ScrollReveal({
     distance: '50px',
     duration: 1000,
     delay: 200,
-    reset: true // ✅ Ensures animations replay on scroll
+    reset: true 
 });
 
 // Apply ScrollReveal to Static Counter section
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const blurBgOverlay = document.querySelector('.blur-bg-overlay');
     const authWrapper = document.querySelector('.auth-wrapper');
     const iconClose = document.querySelector('.icon-close');
-    const registerLink = document.querySelector('.register-link'); // Switch to register
-    const loginLink = document.querySelector('.login-link'); // Switch to login
+    const registerLink = document.querySelector('.register-link'); 
+    const loginLink = document.querySelector('.login-link');
 
     // Check URL parameters to show appropriate form on page load
     const urlParams = new URLSearchParams(window.location.search);
@@ -109,63 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
             authWrapper.classList.remove('active');
         }
     });
-});// Check URL parameters to show appropriate form
-document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const show = urlParams.get('show');
-
-    const wrapper = document.querySelector('.auth-wrapper');
-    const blurBg = document.querySelector('.blur-bg-overlay');
-
-    if (show === 'register') {
-        wrapper.classList.add('active');
-        blurBg.classList.add('active');
-    } else if (show === 'login') {
-        wrapper.classList.remove('active');
-        blurBg.classList.add('active');
-    }
-});
-
-// Existing form switching logic
-const wrapper = document.querySelector('.auth-wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
-const iconClose = document.querySelector('.icon-close');
-const blurBgOverlay = document.querySelector('.blur-bg-overlay');
-
-registerLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    wrapper.classList.add('active');
-});
-
-loginLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    wrapper.classList.remove('active');
-});
-
-btnPopup.addEventListener('click', () => {
-    blurBgOverlay.classList.add('active');
-});
-
-iconClose.addEventListener('click', () => {
-    blurBgOverlay.classList.remove('active');
-});
-
-// Password toggle functionality
-document.querySelectorAll('.toggle-password').forEach(toggle => {
-    toggle.addEventListener('click', function () {
-        const passwordInput = this.previousElementSibling;
-        const eyeIcon = this.querySelector('.eye-icon');
-
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            eyeIcon.name = 'eye';
-        } else {
-            passwordInput.type = 'password';
-            eyeIcon.name = 'eye-off';
-        }
-    });
 });
 
 
@@ -203,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     message.remove();
                 }, 300);
             }
-        }, 4800); // Remove slightly before animation ends
+        }, 4800); 
     });
 });
 
@@ -327,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-
  // Testimonials Swiper
     const testimonialSwiper = new Swiper('.testimonials-slider.swiper', {
         loop: true,
@@ -344,14 +286,11 @@ document.addEventListener('DOMContentLoaded', function () {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        slidesPerView: 1, // Always show just 1 slide
+        slidesPerView: 1, 
         breakpoints: {
-            // Remove the slidesPerView settings from breakpoints
             768: {
-                // Adjust other settings if needed, but keep slidesPerView at 1
             },
             1024: {
-                // Adjust other settings if needed, but keep slidesPerView at 1
             }
         }
     });

@@ -95,9 +95,11 @@ def login_view(request):
             except User.DoesNotExist:
                 pass
         
+        
         if user is not None:
-            login(request, user)
-            return redirect('index')  # Redirect back to index.html after successful login
+                login(request, user)
+                messages.success(request ,'Login successful.')
+                return redirect('index')
         else:
             messages.error(request, 'Invalid credentials.')
             return HttpResponseRedirect(reverse('index') + '?show=login')
@@ -188,6 +190,8 @@ def payment_page(request, booking_id=None):
 @require_http_methods(["POST"])
 def submit_booking(request):
     """Handle booking form submission via AJAX"""
+
+
     try:
         # Get JSON data from request
         data = json.loads(request.body)
