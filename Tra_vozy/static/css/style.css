@@ -2208,6 +2208,7 @@ p {
     padding: 25px;
     border-radius: 8px;
     border-left: 4px solid #FFB22C;
+    color: #333;
 }
 
 .package-info h3 {
@@ -2222,12 +2223,17 @@ p {
     margin-bottom: 15px;
 }
 
+.form-header{
+    color: #333;
+}
+
 .form-fields {
     flex: 1;
 }
 
 .form-group {
     margin-bottom: 20px;
+     color:#000;
 }
 
 label {
